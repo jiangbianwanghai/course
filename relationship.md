@@ -9,21 +9,18 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
 
 接下来我们来考虑下用户与用户地址的关系。一个用户可以有多个地址，所以是一对多的关系。以下是 user 文档的简单结构：
 
-<pre>
-<code>
+```
 {
    "_id":ObjectId("52ffc33cd85242f436000001"),
    "name": "Tom Hanks",
    "contact": "987654321",
    "dob": "01-01-1991"
 }
-</code>
-</pre>
+```
 
 以下是 address 文档的简单结构：
 
-<pre>
-<code>
+```
 {
    "_id":ObjectId("52ffc4a5d85242602e000000"),
    "building": "22 A, Indiana Apt",
@@ -31,15 +28,13 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
    "city": "Los Angeles",
    "state": "California"
 }
-</code>
-</pre>
+```
 
 #嵌入式关系
 
 使用嵌入式方法，我们可以把用户地址嵌入到用户的文档中：
 
-<pre>
-<code>
+```
 "_id":ObjectId("52ffc33cd85242f436000001"),
    "contact": "987654321",
    "dob": "01-01-1991",
@@ -58,16 +53,13 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
          "state": "Illinois"
       }]
 } 
-</code>
-</pre>
+```
 
 以上数据保存在单一的文档中，可以比较容易的获取和维护数据。 你可以这样查询用户的地址：
 
-<pre>
-<code>
+```shell
 >db.users.findOne({"name":"Tom Benzamin"},{"address":1})
-</code>
-</pre>
+```
 
 注意：以上查询中 db 和 users 表示数据库和集合。这种数据结构的缺点是，如果用户和用户地址在不断增加，数据量不断变大，会影响读写性能。
 
