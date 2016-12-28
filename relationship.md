@@ -65,7 +65,7 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
 
 <pre>
 <code>
-\>db.users.findOne({"name":"Tom Benzamin"},{"address":1})
+>db.users.findOne({"name":"Tom Benzamin"},{"address":1})
 </code>
 </pre>
 
@@ -94,7 +94,7 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
 
 <pre>
 <code>
-\>var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
-\>var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
+>var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
+>var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
 </code>
 </pre>
