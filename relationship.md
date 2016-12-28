@@ -52,12 +52,12 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
          "city": "Chicago",
          "state": "Illinois"
       }]
-} 
+}
 ```
 
 以上数据保存在单一的文档中，可以比较容易的获取和维护数据。 你可以这样查询用户的地址：
 
-```shell
+```
 >db.users.findOne({"name":"Tom Benzamin"},{"address":1})
 ```
 
@@ -67,8 +67,7 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
 
 引用式关系是设计数据库时经常用到的方法，这种方法把用户数据文档和用户地址数据文档分开，通过引用文档的 id 字段来建立关系。
 
-<pre>
-<code>
+```
 {
    "_id":ObjectId("52ffc33cd85242f436000001"),
    "contact": "987654321",
@@ -79,14 +78,11 @@ MongoDB 的关系表示多个文档之间在逻辑上的相互联系，文档间
       ObjectId("52ffc4a5d85242602e000001")
    ]
 }
-</code>
-</pre>
+```
 
 以上实例中，用户文档的 address_ids 字段包含用户地址的对象id（ObjectId）数组。我们可以读取这些用户地址的对象id（ObjectId）来获取用户的详细地址信息。这种方法需要两次查询，第一次查询用户地址的对象id（ObjectId），第二次通过查询的id获取用户的详细地址信息。
 
-<pre>
-<code>
+```
 >var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
 >var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
-</code>
-</pre>
+```
