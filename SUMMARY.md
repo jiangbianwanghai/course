@@ -11,7 +11,7 @@
    * [删除文档](remove_docs.md)
    * [MongoDB PHP 扩展](mongodb_php.md)
 * [高手进阶篇](master.md)
-   * [索引](index.md)
+   * [索引](indexs.md)
    * [副本集](duplicate.md)
    * [分片](shard.md)
    * [原子操作](atomic-operations.md)
